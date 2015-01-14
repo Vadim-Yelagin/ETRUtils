@@ -10,12 +10,10 @@
 Pod::Spec.new do |s|
   s.name             = "ETRUtils"
   s.version          = "0.1.0"
-  s.summary          = "A short description of ETRUtils."
+  s.summary          = "Collection of utility classes and categories."
   s.description      = <<-DESC
-                       An optional longer description of ETRUtils
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       ETRUtils
+                       Collection of utility classes and categories.
                        DESC
   s.homepage         = "https://github.com/Vadim-Yelagin/ETRUtils"
   s.license          = 'MIT'

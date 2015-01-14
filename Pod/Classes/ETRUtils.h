@@ -29,8 +29,6 @@
 extern NSString* NSStringFromNSIndexPath(NSIndexPath* indexPath);
 extern NSIndexPath* NSIndexPathFromNSString(NSString* string);
 
-@class ETRCollectionModel;
-
 @interface ETRUtils : NSObject
 
 + (BOOL)isOS7;
@@ -45,13 +43,5 @@ extern NSIndexPath* NSIndexPathFromNSString(NSString* string);
                                 single:(NSString*)singleForm
                                    few:(NSString*)fewForm
                                   many:(NSString*)manyForm;
-+ (NSIndexPath *)indexPathForItem:(id)item
-                inCollectionModel:(ETRCollectionModel *)collectionModel;
-+ (NSIndexPath *)indexPathForItemMatching:(BOOL(^)(id item))block
-                        inCollectionModel:(ETRCollectionModel *)collectionModel;
-+ (void)enumerateItemsInCollectionModel:(ETRCollectionModel *)collectionModel
-                              withBlock:(void(^)(NSIndexPath *indexPath,
-                                                 id item,
-                                                 BOOL *stop))block;
 
 @end

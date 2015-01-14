@@ -5,7 +5,6 @@
 //  Copyright (c) 2013 EastBanc Technologies Russia. All rights reserved.
 //
 
-#import "ETRCollectionModel.h"
 #import "ETRUtils.h"
 
 NSString* NSStringFromNSIndexPath(NSIndexPath* indexPath)
@@ -85,49 +84,6 @@ NSIndexPath* NSIndexPathFromNSString(NSString* string)
                                                   few:fewForm
                                                  many:manyForm];
     return [NSString stringWithFormat:@"%@ %@", @(quantity), plural];
-}
-
-+ (NSIndexPath *)indexPathForItem:(id)item
-                inCollectionModel:(ETRCollectionModel *)collectionModel
-{
-    return [self indexPathForItemMatching:^BOOL(id item2) {
-        return item2 == item || [item2 isEqual:item];
-    } inCollectionModel:collectionModel];
-}
-
-+ (NSIndexPath *)indexPathForItemMatching:(BOOL (^)(id))block
-                        inCollectionModel:(ETRCollectionModel *)collectionModel
-{
-    NSInteger sections = collectionModel.numberOfSections;
-    for (NSInteger section = 0; section < sections; section++) {
-        NSInteger rows = [collectionModel numberOfItemsInSection:section];
-        for (NSInteger row = 0; row < rows; row++) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row
-                                                        inSection:section];
-            if (block([collectionModel itemAtIndexPath:indexPath]))
-                return indexPath;
-        }
-    }
-    return nil;
-}
-
-+ (void)enumerateItemsInCollectionModel:(ETRCollectionModel *)collectionModel withBlock:(void (^)(NSIndexPath *, id, BOOL *))block
-{
-    if (!block)
-        return;
-    NSInteger sections = collectionModel.numberOfSections;
-    for (NSInteger section = 0; section < sections; section++) {
-        NSInteger rows = [collectionModel numberOfItemsInSection:section];
-        for (NSInteger row = 0; row < rows; row++) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row
-                                                        inSection:section];
-            id item = [collectionModel itemAtIndexPath:indexPath];
-            BOOL stop = NO;
-            block(indexPath, item, &stop);
-            if (stop)
-                return;
-        }
-    }
 }
 
 @end
