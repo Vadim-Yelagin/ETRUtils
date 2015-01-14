@@ -1,0 +1,14 @@
+PODS:
+  - ETRUtils (0.1.0)
+
+DEPENDENCIES:
+  - ETRUtils (from `../`)
+
+EXTERNAL SOURCES:
+  ETRUtils:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ETRUtils: 3c401565ed8022364ca2ddbd21bb08694c472d62
+
+COCOAPODS: 0.35.0
